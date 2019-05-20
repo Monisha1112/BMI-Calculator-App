@@ -68,11 +68,12 @@
 
     <Button
         android:id="@+id/calculate_button"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_width="190dp"
+        android:layout_height="58dp"
         android:layout_marginTop="24dp"
         android:onClick="calculateAndDisplayBMI"
         android:text="@string/calculatebutton_text"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,18 +81,17 @@
 
     <TextView
         android:id="@+id/bmi_textView"
-        android:layout_width="333dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_width="232dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="36dp"
         android:text="@string/bmi_text"
         android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calculate_button"
+        app:layout_constraintVertical_bias="0.015"
         tools:text="@string/bmi_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
