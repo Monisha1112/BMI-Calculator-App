@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         float bmi=(float)(weight/((height*height)/10000.0f));
         return bmi;
     }
+
     public void calculateAndDisplayBMI(View view){
         // To do here:
         // Done- Make this function be called automatically when the user clicks on the button
@@ -26,11 +27,33 @@ public class MainActivity extends AppCompatActivity {
         // Apply the formula
         // Display the result in the BMI text view
 
-        EditText height = (EditText)findViewById(R.id.height_editText);
-        EditText weight = (EditText)findViewById(R.id.weight_editText);
+        EditText heightEditText = (EditText)findViewById(R.id.height_editText);
+        EditText weightEditText = (EditText)findViewById(R.id.weight_editText);
         TextView bmi = (TextView)findViewById(R.id.bmi_textView);
-        int heightValue = Integer.parseInt(height.getText().toString());
-        int weightValue = Integer.parseInt(weight.getText().toString());
+
+        String height = heightEditText.getText().toString();
+        String weight = weightEditText.getText().toString();
+
+        // Check whether if either of Height or Weight is empty, if empty
+        // display appropriate error messages.
+        if(height.equalsIgnoreCase("")) {
+            heightEditText.setError("Height can't be empty");
+            return;
+        }
+        if(weight.equalsIgnoreCase("")) {
+            weightEditText.setError("Weight can't be empty");
+            return;
+        }
+        int heightValue = Integer.parseInt(height);
+        int weightValue = Integer.parseInt(weight);
+        if(heightValue == 0) {
+            heightEditText.setError("Height can't be zero");
+            return;
+        }
+        if(weightValue == 0) {
+            weightEditText.setError("Weight can't be zero");
+            return;
+        }
         float result = calculatebmi(heightValue, weightValue);
         bmi.setText(String.format("BMI= %.2f",result));
     }
