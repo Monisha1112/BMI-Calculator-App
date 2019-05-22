@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -27,10 +29,16 @@ public class MainActivity extends AppCompatActivity {
         // Apply the formula
         // Display the result in the BMI text view
 
+        // Initially reset the output display
+        TextView category = findViewById(R.id.category_textView);
+        category.setText("");
+
         EditText heightEditText = (EditText)findViewById(R.id.height_editText);
         EditText weightEditText = (EditText)findViewById(R.id.weight_editText);
         TextView bmi = (TextView)findViewById(R.id.bmi_textView);
 
+        // Reset the BMI text. This will be useful when the user input is not valid.00
+        bmi.setText("BMI = --.--");
         String height = heightEditText.getText().toString();
         String weight = weightEditText.getText().toString();
 
@@ -55,6 +63,23 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         float result = calculatebmi(heightValue, weightValue);
-        bmi.setText(String.format("BMI= %.2f",result));
+        bmi.setText(String.format("BMI = %.2f",result));
+        displayBmiCategory(result);
+    }
+
+    public void displayBmiCategory(float bmi) {
+        TextView category = findViewById(R.id.category_textView);
+        if(bmi < 18.5f) {
+            category.setText("Underweight");
+        }
+        else if(bmi >= 18.5f && bmi <= 25) {
+            category.setText("Normal weight");
+        }
+        else if(bmi > 25f && bmi <= 30) {
+            category.setText("Over-weight");
+        }
+        else if(bmi > 30) {
+            category.setText("Obese");
+        }
     }
 }
